@@ -1,4 +1,9 @@
-import functions.py as functions
+from functions import welcome, start, about, highscores
+selection = welcome()
 
-welcome()
-https://github.com/l-j-g/tpye.git
+if selection == 's':
+	start()
+if selection == 'a':
+	about()
+if selection == "h":
+	highscores()
