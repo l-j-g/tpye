@@ -40,26 +40,24 @@ def print_test(test_txt,word_count, attempt):
 
 	split_txt = test_txt.split()
 	if word_count > 0:
-		if split_txt[word_count-1] == attempt[word_count-1]:
-			split_txt[word_count-1] = green + split_txt[word_count-1] + reset
-		else:
-			split_txt[word_count-1] = red + split_txt[word_count-1] + reset
+		for index, word in enumerate(attempt):
+			if word == split_txt[index]:
+				split_txt[index] = green + split_txt[index] + reset
+			else:
+				split_txt[index] = red + split_txt[index] + reset
+
 	if word_count < len(split_txt):
 		split_txt[word_count] = blue + split_txt[word_count] + reset
 
 	test_txt = " ".join(split_txt)
-
 	print(test_txt)
 	return 
 
-def start():
+def start_game():
 	term = Terminal()
 	username = get_name()
-
 	difficulty = select_difficulty()
-
 	test_txt = select_test(difficulty)
-
 	start=time.time()
 
 	word_count = 0
@@ -82,7 +80,10 @@ def start():
 	end = time.time()
 	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
 	print(term.clear)
+	results(duration,WPM, accuracy, score)
 
+
+def results(duration, WPM, accuracy, score):
 	print(f"Congratulations, you completed the test in {duration} seconds.")
 	print(f"Your typing speed was: {WPM} WPM")
 	print(f"Your accuracy was: {accuracy}%")
