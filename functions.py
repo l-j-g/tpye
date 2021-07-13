@@ -30,7 +30,7 @@ def select_test(difficulty):
 		test_txt = tests[randrange(1,total_tests,1)]
 	return test_txt
 
-def print_test(test_txt,word_count):
+def print_test(test_txt,word_count, attempt):
 
 	red = "\033[31m"
 	green = "\033[32m"
@@ -39,10 +39,18 @@ def print_test(test_txt,word_count):
 
 
 	split_txt = test_txt.split()
-	split_txt[word_count] = blue + split_txt[word_count] + reset
+	if word_count > 0:
+		if split_txt[word_count-1] == attempt[word_count-1]:
+			split_txt[word_count-1] = green + split_txt[word_count-1] + reset
+		else:
+			split_txt[word_count-1] = red + split_txt[word_count-1] + reset
+	if word_count < len(split_txt):
+		split_txt[word_count] = blue + split_txt[word_count] + reset
+
 	test_txt = " ".join(split_txt)
+
 	print(test_txt)
-	return
+	return 
 
 def start():
 	term = Terminal()
@@ -52,17 +60,15 @@ def start():
 
 	test_txt = select_test(difficulty)
 
-
-
-
 	start=time.time()
+
 	word_count = 0
 	attempt = []
 	this_word = ""
 	print(term.clear)
-	print_test(test_txt,word_count)
+	print_test(test_txt,word_count, attempt)
 
-	while word_count < test_txt.count(" "):
+	while word_count < test_txt.count(" ")+1:
 		with term.cbreak():
 			key_press = term.inkey()
 			if key_press == " ":
@@ -70,7 +76,29 @@ def start():
 				attempt.append(this_word)
 				this_word = ""
 				print(term.clear)
-				print_test(test_txt,word_count)
+				print_test(test_txt,word_count, attempt)
 			else: 
 				this_word = this_word + key_press 
-	print(attempt)
+	end = time.time()
+	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
+	print(term.clear)
+
+	print(f"Congratulations, you completed the test in {duration} seconds.")
+	print(f"Your typing speed was: {WPM} WPM")
+	print(f"Your accuracy was: {accuracy}%")
+	print(f"Your total score was: {score}")
+
+def calculate_score(start,end,test_txt,attempt):
+	correct = 0
+	incorrect = 0
+	duration = round(end-start)
+	WPM = round((len(attempt)/duration)*60)
+	for index, word in enumerate(test_txt.split()):
+		if word == attempt[index]:
+			correct += 1
+		else: 
+			incorrect += 1
+	accuracy = round((correct/len(test_txt.split())) * 100)
+	score = accuracy * WPM
+
+	return duration, WPM, accuracy, score
