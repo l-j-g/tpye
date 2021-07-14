@@ -1,4 +1,5 @@
 from art import *
+import pickle
 from content import *
 from random import randrange
 import time
@@ -55,7 +56,6 @@ def print_test(test_txt,word_count, attempt):
 
 def start_game():
 	term = Terminal()
-	username = get_name()
 	difficulty = select_difficulty()
 	test_txt = select_test(difficulty)
 	start=time.time()
@@ -103,3 +103,11 @@ def calculate_score(start,end,test_txt,attempt):
 	score = accuracy * WPM
 
 	return duration, WPM, accuracy, score
+
+def load_highscores():
+	with open('scores','rb') as file:
+		high_scores = pickle.load(file)	
+		high_scores_beginner = high_scores[0]
+		high_scores_intermediate = high_scores[1]
+		high_scores_expert = high_scores[2]
+	return high_scores_beginner,high_scores_intermediate,high_scores_expert 
