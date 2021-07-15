@@ -6,16 +6,18 @@ import time
 from blessed import Terminal
 from tabulate import tabulate
 import os
+from operator import itemgetter
 
 def welcome():
 	tprint("tpye",font="block",chr_ignore=True)
 	print("A terminal based typing game.")
 	print("")
+	print("Enter your choice: ")
 	print("A: About")
 	print("S: Start")
 	print("H: High Scores")
 	print("")
-	selection = input("Enter your choice: ")
+	selection = input("")
 	selection = selection[0].lower()
 	return selection
 
@@ -65,6 +67,7 @@ def print_test(test_txt,word_count, attempt):
 
 def start_game():
 	term = Terminal()
+	name = get_name()
 	difficulty = select_difficulty()
 	test_txt = select_test(difficulty)
 	start=time.time()
@@ -88,27 +91,39 @@ def start_game():
 				this_word = this_word + key_press 
 	end = time.time()
 	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
+	high_score_entry = (name, score, WPM, accuracy)
 	print(term.clear)
 	print_results(duration,WPM, accuracy, score)
-	save_score(WPM,accuracy,score, difficulty)
+	high_scores = load_highscores()
+	print( type(high_scores))
+
+	if difficulty == 'b':
+		difficulty_index = 0
+	if difficulty == 'i':
+		difficulty_index = 1
+	if difficulty == 'e':
+		difficulty_index = 2
+
+	save_score(high_score_entry, high_scores, difficulty_index)
+	print_options_end_of_game()
 	return
 
-def save_score(WPM,accuracy,score, difficulty):
-	print(difficulty)
-	with open ('scores', 'rb') as file:
-		high_scores = pickle.load(file)
-		if difficulty == 'b':
-			print(high_scores[0])
-		if difficulty == 'i':
-			high_scores[1]
-		if difficulty == 'e':
-			high_scores[2] 
+def save_score(new_score, high_scores, difficulty_index):
+	high_scores[difficulty_index].append(new_score)
+
+	for idx,scores in enumerate(high_scores):
+		scores = sorted(scores,key=itemgetter(1), reverse=True)[:10]
+		high_scores[idx] = scores
+
+	with open ('scores', 'wb') as file:
+		high_scores = pickle.dump(high_scores, file)
 	return 
 
 def print_options_end_of_game():
 	print("V: View High Scores")
 	print("R: Reset")
 	print("P: Play Again")
+	print("Q: Quit")
 	input()
 	return
 
@@ -137,11 +152,7 @@ def calculate_score(start,end,test_txt,attempt):
 def load_highscores():
 	with open('scores','rb') as file:
 		high_scores = pickle.load(file)	
-		high_scores_beginner = high_scores[0]
-		high_scores_intermediate = high_scores[1]
-		high_scores_expert = high_scores[2]
-
-	return high_scores_beginner,high_scores_intermediate,high_scores_expert 
+	return high_scores
 
 def print_highscores(high_scores):
 
