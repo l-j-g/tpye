@@ -31,7 +31,14 @@ def get_name():
 	return input("Enter your name: ")
 
 def select_difficulty():
-	return input("Choose your difficulty: (b): beginner, (i): intermediate, (e): expert\n")
+	selection = input("Choose your difficulty: (b): beginner, (i): intermediate, (e): expert\n")
+	selection = selection[0].lower()
+
+	if selection == "b" or selection == "i" or selection == "e":
+		return selection
+	else:
+			print("That was not a valid selection. Please enter the difficulty you would like to attempt:") 
+			return select_difficulty()
 
 def select_test(difficulty):
 	if difficulty in difficulties:
