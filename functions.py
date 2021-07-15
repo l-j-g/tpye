@@ -10,11 +10,11 @@ from operator import itemgetter
 
 def welcome():
 	tprint("tpye",font="block",chr_ignore=True)
-	print("A terminal based typing game.")
+	print("A terminal based typing game written in python.")
 	print("")
 	print("Enter your choice: ")
-	print("A: About")
-	print("S: Start")
+	print("A: About this application")
+	print("S: Start a new game")
 	print("H: High Scores")
 	print("")
 	selection = input("")
@@ -49,7 +49,7 @@ def print_test(test_txt,word_count, attempt):
 	blue = "\033[34m"
 	reset = "\033[39m"
 
-
+	print("Type the following passage of text as quickly as possible!: ")
 	split_txt = test_txt.split()
 	if word_count > 0:
 		for index, word in enumerate(attempt):
@@ -95,7 +95,6 @@ def start_game():
 	print(term.clear)
 	print_results(duration,WPM, accuracy, score)
 	high_scores = load_highscores()
-	print( type(high_scores))
 
 	if difficulty == 'b':
 		difficulty_index = 0
@@ -105,7 +104,6 @@ def start_game():
 		difficulty_index = 2
 
 	save_score(high_score_entry, high_scores, difficulty_index)
-	print_options_end_of_game()
 	return
 
 def save_score(new_score, high_scores, difficulty_index):
@@ -120,12 +118,11 @@ def save_score(new_score, high_scores, difficulty_index):
 	return 
 
 def print_options_end_of_game():
-	print("V: View High Scores")
-	print("R: Reset")
-	print("P: Play Again")
+	print("H: View High Scores")
+	print("S: Start Again")
 	print("Q: Quit")
-	input()
-	return
+	selection = input()
+	return selection
 
 
 def print_results(duration, WPM, accuracy, score):
@@ -158,11 +155,19 @@ def print_highscores(high_scores):
 
 	for idx, difficulty in enumerate(difficulties):
 		print("")
-		print(difficulties[difficulty].capitalize())
+		print(f" Top 10 {difficulties[difficulty].capitalize()} Scores: ")
 		print("")
 		print(tabulate(high_scores[idx], headers = ['Name', 'Score', 'WPM', 'Accuracy'], tablefmt='orgtbl'))
 	return
 
+def high_scores_menu():
+	print("")
+	print("Enter your choice: ")
+	print("A: About this application")
+	print("S: Start a new game")
+	print("B: Go back")
+	selection = input("")
+	return selection
 
 
 

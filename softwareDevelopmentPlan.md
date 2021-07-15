@@ -17,34 +17,34 @@ To start the application enter: `tpye` at your command line prompt.
 
 ## Features
 
-### User identification
-
 ### Variable Difficulty 
-The user will have the option of selecting difficulty (beginner, intermediate, expert) at the start of the application. The difficulty variable will change the passage of text that the user is required to type with the following variations: 
 
-- beginner: the passage of text will have no capitalization, no grammar and use simple words.
-- intermediate: the passage of text will have some capitalization, grammar and use words of mixed complexity.
-- expert: the passage of text will have a high level of capitalization, grammar and use complex words.
+The user can select a difficulty setting at the start of the application. The applicaiton will have three different difficulty settings (beginner, intermediate and expert). The difficulty variable will select a passage of text for the user to type from a nested dictionary stored within the applicaiton. Harder difficulties will require the user to type longer and more gramatically difficult passages of text.
+
+### Text Highlighting 
+
+As the user types the required passage of text, the characters input will be captured and stored in a variable. The display will dynamically highlight the current word that the user is typing in the color blue and will highlight previously typed words in either green or red depending on if it was typed correctly.
 
 ### Score Calculation
 
-Once the user has typed the required passage of text the application will calculate the users accuracy, and typing speed (in words per minute).
+Once the user has completed the passage of text the application will calculate a score based on the amount of the time user took to complete the test and the number of words they spelt correctly. 
 
+The top 10 scores for each difficulty will be stored on persistent file that will be saved between executions of the application. Each score will be identified by a input name provided to the application.  
 
-### Scoreboard
-
-The top 10 high scores for each difficulty setting will be retained. 
-
-
-
-- At least 3 features, describe each.
-- Include use of variables, loops and conditional statements, error handling.
 
 ## User Interaction and Experiance
 
-- How the user will find out about how to interact with each feature
-- How the user will interact with each feature
-- How errors will be handled and displayed to the user. 
+The user will navigate and interact with the program through text based prompts and input. 
+
+Upon launching the applicaiton the user can choose between.
+
+- About : prompting text explaining about the features, how to use and the purpose of the application.
+- Start : Starting the main typing game
+- High scores : View top 10 previous high scores for each difficulty setting.
+
+After starting the game the user will be asked to select a difficulty setting and enter their name. They will then be prompted to type a passage of text as quickly as they can. As words are typed the current word that the user is typing will be indicated with blue colouring and previously typed words will be indicated as either incorect (red) or correct (green).
+
+After completing the passage of text the users score will be calculated and displayed to them. They will then be prompted with a choice to play again or quit the application.  
 
 ## Control flow diagram
 

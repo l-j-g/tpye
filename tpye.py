@@ -1,12 +1,21 @@
-from functions import welcome, start_game, about, load_highscores, print_highscores
-
+from functions import *
+quit = False
 selection = welcome()
 
-if selection == 's':
-	start_game()
-if selection == 'a':
-	about()
-if selection == "h":
-	high_scores = load_highscores()
-	print_highscores(high_scores)
+while quit == False:
+	if selection == 's':
+		start_game()
+		selection = print_options_end_of_game()
+	if selection == 'a':
+		about()
+	if selection == "h":
+		high_scores = load_highscores()
+		print_highscores(high_scores)
+		selection = high_scores_menu()
+	if selection == 'q':
+		quit = True
+	if selection == 'b':
+		selection = welcome()
+
+
 
