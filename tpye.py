@@ -1,10 +1,12 @@
-from functions import welcome, start, about, highscores
+from functions import welcome, start_game, about, load_highscores, print_highscores
+
 selection = welcome()
 
-
 if selection == 's':
-	start()
+	start_game()
 if selection == 'a':
 	about()
 if selection == "h":
-	highscores()
+	high_scores = load_highscores()
+	print_highscores(high_scores)
+

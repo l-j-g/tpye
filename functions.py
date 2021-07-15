@@ -4,6 +4,7 @@ from content import *
 from random import randrange
 import time
 from blessed import Terminal
+from tabulate import tabulate
 
 def welcome():
 	tprint("tpye",font="block",chr_ignore=True)
@@ -110,4 +111,18 @@ def load_highscores():
 		high_scores_beginner = high_scores[0]
 		high_scores_intermediate = high_scores[1]
 		high_scores_expert = high_scores[2]
+
 	return high_scores_beginner,high_scores_intermediate,high_scores_expert 
+
+def print_highscores(high_scores):
+
+	for idx, difficulty in enumerate(difficulties):
+		print("")
+		print(difficulties[difficulty].capitalize())
+		print("")
+		print(tabulate(high_scores[idx], headers = ['Name', 'Score', 'WPM', 'Accuracy'], tablefmt='orgtbl'))
+	return
+
+
+
+
