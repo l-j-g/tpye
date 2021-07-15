@@ -5,10 +5,18 @@ from random import randrange
 import time
 from blessed import Terminal
 from tabulate import tabulate
+import os
 
 def welcome():
 	tprint("tpye",font="block",chr_ignore=True)
-	selection = input("(a)bout, (s)tart, (h)ighscores\n")
+	print("A terminal based typing game.")
+	print("")
+	print("A: About")
+	print("S: Start")
+	print("H: High Scores")
+	print("")
+	selection = input("Enter your choice: ")
+	selection = selection[0].lower()
 	return selection
 
 def about():
@@ -81,10 +89,31 @@ def start_game():
 	end = time.time()
 	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
 	print(term.clear)
-	results(duration,WPM, accuracy, score)
+	print_results(duration,WPM, accuracy, score)
+	save_score(WPM,accuracy,score, difficulty)
+	return
+
+def save_score(WPM,accuracy,score, difficulty):
+	print(difficulty)
+	with open ('scores', 'rb') as file:
+		high_scores = pickle.load(file)
+		if difficulty == 'b':
+			print(high_scores[0])
+		if difficulty == 'i':
+			high_scores[1]
+		if difficulty == 'e':
+			high_scores[2] 
+	return 
+
+def print_options_end_of_game():
+	print("V: View High Scores")
+	print("R: Reset")
+	print("P: Play Again")
+	input()
+	return
 
 
-def results(duration, WPM, accuracy, score):
+def print_results(duration, WPM, accuracy, score):
 	print(f"Congratulations, you completed the test in {duration} seconds.")
 	print(f"Your typing speed was: {WPM} WPM")
 	print(f"Your accuracy was: {accuracy}%")
