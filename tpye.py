@@ -1,6 +1,20 @@
 from functions import *
+from sys import argv
 quit = False
-selection = welcome()
+
+try: 
+	if argv[1] == "--help" or "--h":
+		selection = 'a'
+	if argv[1] == "--start":
+		selection = 's'
+	if argv[1] == "--highsocres":
+		pass
+	if argv[1] == "--version":
+		pass
+except IndexError:
+		selection = welcome()
+		print("here")
+
 
 while quit == False:
 	if selection == 's':

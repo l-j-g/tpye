@@ -15,12 +15,12 @@ def welcome():
 	print("A: About this application")
 	print("S: Start a new game")
 	print("V: View High Scores")
-	print("")
+	print("Q: Quit application")
 	selection = input("")
 	try: 
 		selection = selection[0].lower()
 
-		if selection == "a" or selection == "s" or selection == "v":
+		if selection == "a" or selection == "s" or selection == "v" or selection == 'q':
 			return selection
 		else:
 				print("That was not a valid selection. Please try again:") 
