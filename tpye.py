@@ -8,7 +8,7 @@ while quit == False:
 		selection = print_options_end_of_game()
 	if selection == 'a':
 		about()
-	if selection == "h":
+	if selection == "v":
 		high_scores = load_highscores()
 		print_highscores(high_scores)
 		selection = high_scores_menu()
