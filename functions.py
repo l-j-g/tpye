@@ -154,7 +154,7 @@ def save_score(new_score, high_scores, difficulty_index):
 	for idx,scores in enumerate(high_scores):
 		scores = sorted(scores,key=itemgetter(1), reverse=True)[:10]
 		if new_score in scores:
-			print(f"Congratulations, that was the #{scores.index(new_score)} highest score for this difficulty!")
+			print(f"Congratulations, that was the #{scores.index(new_score)+1} highest score for this difficulty!")
 		high_scores[idx] = scores
 
 	with open ('scores', 'wb') as file:
