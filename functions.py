@@ -32,7 +32,7 @@ def welcome():
 
 def about():
 	tprint("tpye",font="block",chr_ignore=True)
-	print(" \"tpye\" is a terminal based typing game written in python.")
+	print("\"tpye\" is a terminal based typing game written in python.")
 	print("The purpose of this game is to help develop typing skills in an enjoyable and interactive way.")
 	print("The game features three difficulty settings, dynamic text highlighting and a peristent scoreboard.")
 	print("Once starting the game you will be asked to type a passage of text as quickly and accurately as possible.")
@@ -153,6 +153,8 @@ def save_score(new_score, high_scores, difficulty_index):
 
 	for idx,scores in enumerate(high_scores):
 		scores = sorted(scores,key=itemgetter(1), reverse=True)[:10]
+		if new_score in scores:
+			print(f"Congratulations, that was the #{scores.index(new_score)} highest score for this difficulty!")
 		high_scores[idx] = scores
 
 	with open ('scores', 'wb') as file:

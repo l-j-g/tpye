@@ -13,7 +13,6 @@ try:
 		pass
 except IndexError:
 		selection = welcome()
-		print("here")
 
 
 while quit == False:
