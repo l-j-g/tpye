@@ -3,19 +3,19 @@ from operator import itemgetter
 
 
 high_scores_beginner = [
-	("Jack", 300, 30, 80),
-	("Louie", 9000, 30, 80),
-	("Jack", 3000, 30, 80)
+	("Jack", 2400, 30, 80),
+	("Louie", 2400, 30, 80),
+	("Jack", 2400, 30, 80)
 ]
 high_scores_intermediate = [
-	("Gin", 6000, 30, 80),
-	("Jack", 9000, 30, 80),
-	("James", 2000, 30, 80)
+	("Gin", 2400, 30, 80),
+	("Jack", 2400, 30, 80),
+	("James", 2400, 30, 80)
 ] 
 high_scores_expert = [
-	("John", 300, 30, 80),
-	("Joe", 5000, 30, 80),
-	("Jack", 6000, 30, 80)
+	("John", 2400, 30, 80),
+	("Joe", 2400, 30, 80),
+	("Jack", 2400, 30, 80)
 ]
 high_scores = [high_scores_beginner,high_scores_intermediate,high_scores_expert]
 

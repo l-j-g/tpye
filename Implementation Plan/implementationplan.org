@@ -1,0 +1,36 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t pri:t <:t p:t
+#+title: Implementation Plan
+#+date: <2021-07-16 Fri>
+#+author: Lachlan Greve
+#+email: lachlan@Lachlans-MacBook-Pro.local
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.2 (Org mode 9.4.4)
+* Type Feature Implementation Plan
+** DONE [#A] Dynamically Highlight Text
+   CLOSED: [2021-07-13 Tues 12:53] DEADLINE: <2021-07-17 Sat>
+- [X] Find a package to accept char by char input
+- [X] Write a function to capture character input, writing individual words to a list
+- [X] Write a function to split test text into a list of words
+- [X] Write a function to check compare words that are typed with the test text
+- [X] Write a function that prints the test text, highlighting the current word being typed in blue and highlight previously typed words in either green or red, depending on if they were typed correctly
+- [ ] Address a bug where the users input is not echoed back as they type and are unable to correct mistakes with the backspace key.
+** DONE [#B] Variable Difficulty 
+   CLOSED: [2021-07-15 Thur 14:20] DEADLINE: <2021-07-17 Sat>
+- [X] Find a source of typing tests of variable difficulties
+- [X] Create a nested dictionary to store test text
+- [X] Write a function to take input from the user to select difficulty setting
+- [X] Write a function to randomly select test text of the appropriate difficulty
+- [X] Print the text to the user and ask them to type it 
+** DONE [#C] Scoreboard / Highscores 
+   CLOSED: [2021-07-16 Fri 18:54] DEADLINE: <2021-07-17 Sat>
+- [X] Find a suitable package to load and write files to disk
+- [X] Create a function to calculate the score of a typing test taking the time, attempt text, and test text as input and returning a score, word per minute and accuracy.
+- [X] Create a file to store highscores, writing the username, words per minute, accuracy and score for each difficulty
+- [X] Write a function to load highscores from file, sort by score and then write the current high scores to the file.
+- [X] Write a function to check if a score was in the top 10 highscores and to notify the user of their rank
+- [X] Write a function to print top 10 highscores of each difficulty in a tabular format. 
