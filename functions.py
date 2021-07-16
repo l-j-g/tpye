@@ -130,6 +130,7 @@ def start_game():
 				print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
 			else: 
 				this_word = this_word + key_press #if a other than whitepsace is entered this character is added as part of the current word that is being typed.
+				print(term.clear_bol + this_word,end="",flush=True)
 	end = time.time()
 	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
 	high_score_entry = (name, score, WPM, accuracy)

@@ -58,3 +58,4 @@ The application can be launched with the following optional arguments:
 `--start : immediately start application, skipping menus`  
 `--about : display a brief description of the application`  
 `--highscores : display previous players highscores`  
+`--version : print the current version of the application and exit`  

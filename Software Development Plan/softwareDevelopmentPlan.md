@@ -58,4 +58,4 @@ After completing the passage of text the users score will be calculated and disp
 
 ## Control flow diagram
 
-![Control Flow Diagram](./ControlFlowDiagram.svg)
+![Control Flow Diagram](/ControlFlowDiagram/ControlFlowDiagram.svg)
