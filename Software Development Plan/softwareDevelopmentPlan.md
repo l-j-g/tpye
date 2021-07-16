@@ -12,6 +12,7 @@ Before starting the application please ensure that all of the system environment
 `-pip3 install -r path/to/your/requirements.txt`
 
 To start the application enter: `tpye.sh` at your command line prompt.
+
 The user will then interact with the application through text based prompts. 
 
 When starting the application, the user will be asked to input their name and difficulty. They will then be presented with a passage of text to type. Upon completion a score will be calculated and displayed to the user. 
@@ -20,7 +21,9 @@ When starting the application, the user will be asked to input their name and di
 `optional arguments: `  
 `--help : show this message and exit`  
 `--start : immediately start application, skipping menus`  
+`--about : display a brief description of the application`  
 `--highscores : display previous players highscores`  
+`--version : print the current version of the application and exit`  
 
 ## Features
 
@@ -58,4 +61,4 @@ After completing the passage of text the users score will be calculated and disp
 
 ## Control flow diagram
 
-![Control Flow Diagram](/ControlFlowDiagram/ControlFlowDiagram.svg)
+![Control Flow Diagram](../ControlFlowDiagram/ControlFlowDiagram.svg)
