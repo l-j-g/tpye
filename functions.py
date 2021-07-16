@@ -5,7 +5,6 @@ from random import randrange
 import time
 from blessed import Terminal
 from tabulate import tabulate
-import os
 from operator import itemgetter
 
 def welcome():
@@ -32,8 +31,25 @@ def welcome():
 
 
 def about():
-	print("bla")
-	return
+	tprint("tpye",font="block",chr_ignore=True)
+	print(" \"tpye\" is a terminal based typing game written in python.")
+	print("The purpose of this game is to help develop typing skills in an enjoyable and interactive way.")
+	print("The game features three difficulty settings, dynamic text highlighting and a peristent scoreboard.")
+	print("Once starting the game you will be asked to type a passage of text as quickly and accurately as possible.")
+	print("")
+	print("Choose what you would like to do:")
+	selection = input("(S): Start game, (B): Back, (Q): Quit\n")
+	try: 
+		selection = selection[0].lower()
+		if selection == "b" or selection == "s" or selection == 'q':
+			return selection
+		else:
+			print("That was not a valid selection. Please try again:") 
+			return about()
+	except:
+			print("That was not a valid selection. Please try again:") 
+			return about()
+
 
 def get_name():
 #this function take user input for their name - to identify high scores.

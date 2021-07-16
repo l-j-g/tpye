@@ -7,7 +7,7 @@ while quit == False:
 		start_game()
 		selection = print_options_end_of_game()
 	if selection == 'a':
-		about()
+		selection = about()
 	if selection == "v":
 		high_scores = load_highscores()
 		print_highscores(high_scores)
@@ -16,6 +16,8 @@ while quit == False:
 		quit = True
 	if selection == 'b':
 		selection = welcome()
+	if selection == 'a':
+		selection = about() 
 
 
 
