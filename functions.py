@@ -57,7 +57,7 @@ def get_name():
 
 def select_difficulty():
 #this function takes user input to select the difficulty of the typing test.
-	selection = input("Choose your difficulty: (b): beginner, (i): intermediate, (e): expert\n")
+	selection = input("Select a difficulty: (b): Beginner, (i): Intermediate, (e): Expert\n")
 	try:
 		selection = selection[0].lower()
 
@@ -122,15 +122,26 @@ def start_game():
 	while word_count < test_txt.count(" ")+1:
 		with term.cbreak():
 			key_press = term.inkey()
-			if key_press == " ": #when spacebar is pressed this indicates that a word has been completed 
-				word_count += 1
-				attempt.append(this_word) #the typed word is added to a list of all typed words
-				this_word = ""
+			if key_press == " " or key_press.name:
+				if key_press == " ": #when spacebar is pressed this indicates that a word has been completed 
+					word_count += 1
+					attempt.append(this_word) #the typed word is added to a list of all typed words
+					this_word = ""
+					print(term.clear)
+					print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
+				if key_press.name == "KEY_BACKSPACE":
+					this_word = this_word[:-1]
+					print(term.clear)
+					print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
+					print(this_word,end="",flush=True)
+				else: #if 
+					pass
+				
+			else: 
+				this_word = this_word + key_press #if a other than whitepsace or backspace is entered this character is added as part of the current word that is being typed.
 				print(term.clear)
 				print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
-			else: 
-				this_word = this_word + key_press #if a other than whitepsace is entered this character is added as part of the current word that is being typed.
-				print(term.clear_bol + this_word,end="",flush=True)
+				print(this_word,end="",flush=True)
 	end = time.time()
 	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
 	high_score_entry = (name, score, WPM, accuracy)

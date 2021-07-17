@@ -21,7 +21,6 @@ try:
 except IndexError:
 		selection = welcome()
 
-
 while quit == False:
 	if selection == 's':
 		start_game()
