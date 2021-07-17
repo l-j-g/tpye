@@ -222,17 +222,25 @@ def calculate_score(start,end,test_txt,attempt):
 
 def load_highscores():
 # this function loads the binary file that holds highscores using the pickle library
-	with open('scores','rb') as file:
-		high_scores = pickle.load(file)	
+	try: 	
+		with open('scores','rb') as file:
+			high_scores = pickle.load(file)	
+	except FileNotFoundError:
+		with open('scores','wb') as file:
+			high_scores = [[],[],[]]
+			pickle.dump(high_scores, file)	
 	return high_scores
 
 def print_highscores(high_scores):
 # this function prints the highscores for each difficulty in a formated table using the tabulate package
-	for idx, difficulty in enumerate(difficulties):
-		print("")
-		print(f" Top 10 {difficulties[difficulty].capitalize()} Scores: ")
-		print("")
-		print(tabulate(high_scores[idx], headers = ['Name', 'Score', 'WPM', 'Accuracy (%)'], tablefmt='orgtbl'))
+	if len(high_scores) > 0:
+		for idx, difficulty in enumerate(difficulties):
+			print("")
+			print(f" Top 10 {difficulties[difficulty].capitalize()} Scores: ")
+			print("")
+			print(tabulate(high_scores[idx], headers = ['Name', 'Score', 'WPM', 'Accuracy (%)'], tablefmt='orgtbl'))
+	else: 
+		print("ERROR: No high scores found.")
 	return
 
 def high_scores_menu():
