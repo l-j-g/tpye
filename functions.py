@@ -7,6 +7,7 @@ from blessed import Terminal
 from tabulate import tabulate
 from operator import itemgetter
 import sys
+from strip_ansi import strip_ansi
 
 def welcome():
 	tprint("tpye",font="block",chr_ignore=True)
@@ -93,11 +94,15 @@ def print_test(test_txt,word_count, attempt):
 	print("Type the following passage of text as quickly as possible!: ")
 	split_txt = test_txt.split() #the test text is split into individual words to allow for specific highlighting of words.
 	if word_count > 0:
-		for index, word in enumerate(attempt):
+		""" 		for index, word in enumerate(attempt):
 			if word == split_txt[index]:
 				split_txt[index] = green + split_txt[index] + reset
 			else:
-				split_txt[index] = red + split_txt[index] + reset
+				split_txt[index] = red + split_txt[index] + reset """
+		if strip_ansi(split_txt[word_count-1]) == attempt[word_count-1]:
+			split_txt[word_count-1] = green + strip_ansi(split_txt[word_count-1]) + reset
+		else:
+			split_txt[word_count-1] = red + strip_ansi(split_txt[word_count-1]) + reset
 
 	if word_count < len(split_txt):
 		split_txt[word_count] = blue + split_txt[word_count] + reset
@@ -118,7 +123,7 @@ def start_game():
 	attempt = []
 	this_word = ""
 	print(term.clear)
-	print_test(test_txt,word_count, attempt)
+	colour_txt = print_test(test_txt,word_count, attempt)
 #the cbreak and inkey functions from the 'blessed' package are used to capture input as it is typed. 
 	while word_count < test_txt.count(" ")+1:
 		with term.cbreak():
@@ -129,7 +134,7 @@ def start_game():
 					attempt.append(this_word) #the typed word is added to a list of all typed words
 					this_word = ""
 					print(term.clear)
-					print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
+					colour_txt = print_test(colour_txt,word_count, attempt) # this function updates the text highlighting 
 				if key_press.name == "KEY_BACKSPACE":
 					this_word = this_word[:-1]
 					sys.stdout.write('\r'+this_word)
