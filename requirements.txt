@@ -1,3 +1,0 @@
-art
-blessed
-tabulate

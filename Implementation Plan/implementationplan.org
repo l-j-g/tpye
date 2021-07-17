@@ -18,7 +18,7 @@
 - [X] Write a function to split test text into a list of words
 - [X] Write a function to check compare words that are typed with the test text
 - [X] Write a function that prints the test text, highlighting the current word being typed in blue and highlight previously typed words in either green or red, depending on if they were typed correctly
-- [ ] Address a bug where the users input is not echoed back as they type and are unable to correct mistakes with the backspace key.
+- [X] Address a bug where the users input is not echoed back as they type and are unable to correct mistakes with the backspace key.
 ** DONE [#B] Variable Difficulty 
    CLOSED: [2021-07-15 Thur 14:20] DEADLINE: <2021-07-17 Sat>
 - [X] Find a source of typing tests of variable difficulties

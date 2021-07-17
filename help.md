@@ -14,6 +14,7 @@ This program  on Python. To install Python, check out https://installpython3.com
 - art
 - blessed
 - tabulate
+- strip_ansi
 
 Before starting the application ensure that all of the system environment requirements have been met.
  
@@ -34,7 +35,7 @@ To start the application type the following, within the type installation direct
 
 The user can select a difficulty setting at the start of the application. The application will have three different difficulty settings (beginner, intermediate and expert). The difficulty variable will select a passage of text for the user to type from a nested dictionary stored within the application. Harder difficulties will require the user to type longer and more gramatically intensive passages of text.
 
-All typing tests used in this program have been sourced from https://thepracticetest.com/typing/tests/practice-paragraphs/ and its Authors. I take no credit for developing this material.
+All typing tests used in this program have been sourced from [[https://thepracticetest.com/typing/tests/practice-paragraphs/]] and its Authors. I take no credit for developing this material.
 
 ### Text Highlighting
   
