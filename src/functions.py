@@ -20,14 +20,17 @@ def welcome():
 	print("Q: Quit application")
 	selection = input("")
 	try: 
+#checks to see if the first character of input matches on of the possible selections.
 		selection = selection[0].lower()
 
 		if selection == "a" or selection == "s" or selection == "v" or selection == 'q':
 			return selection
 		else:
+			#If selection does not match, user asked for input again.
 				print("That was not a valid selection. Please try again:") 
 				return welcome()
 	except:
+		#If empty input is received, user asked for input again.
 		print("That was not a valid selection. Please try again:") 
 		return welcome()
 
@@ -94,17 +97,21 @@ def print_test(test_txt,word_count, attempt):
 	print("Type the following passage of text as quickly as possible!: ")
 	split_txt = test_txt.split() #the test text is split into individual words to allow for specific highlighting of words.
 	if word_count > 0:
+		#initially a for loop was used to highlight text, the was resource intensive as caused a delay for longer passages of text.
 		""" 		for index, word in enumerate(attempt):
 			if word == split_txt[index]:
 				split_txt[index] = green + split_txt[index] + reset
 			else:
 				split_txt[index] = red + split_txt[index] + reset """
+		#using the strip_ansi package text color is updated using an if statement, requiring less calculations.
+		#checks if the last typed word was typed correctly and colors it accordingly, strips previous blue coloring.
 		if strip_ansi(split_txt[word_count-1]) == attempt[word_count-1]:
 			split_txt[word_count-1] = green + strip_ansi(split_txt[word_count-1]) + reset
 		else:
 			split_txt[word_count-1] = red + strip_ansi(split_txt[word_count-1]) + reset
 
 	if word_count < len(split_txt):
+		#highlights the current word in blue
 		split_txt[word_count] = blue + split_txt[word_count] + reset
 
 	colour_test_txt = " ".join(split_txt)
