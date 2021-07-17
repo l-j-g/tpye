@@ -25,7 +25,7 @@ To install the necessary dependencies, navigate to your *type* src folder and ex
 Ensure that the tpye executable file has the required permissions:  
 `chmod +x ./type.sh`  
 
-To start the application type the following, within the type src directory.
+To start the application type the following, within the type directory.
 
 `./type.sh`  
 
@@ -33,7 +33,7 @@ To start the application type the following, within the type src directory.
 
 ### Variable Difficulty
 
-The user can select a difficulty setting at the start of the application. The application will have three different difficulty settings (beginner, intermediate and expert). The difficulty variable will select a passage of text for the user to type from a nested dictionary stored within the application. Harder difficulties will require the user to type longer and more gramatically intensive passages of text.
+The user can select a difficulty setting at the start of the application. The application will have three different difficulty settings (beginner, intermediate and expert). The difficulty variable will select a passage of text for the user to type from a nested dictionary stored within the application. Harder difficulties will require the user to type longer passages of text.
 
 All typing tests used in this program have been sourced from [[https://thepracticetest.com/typing/tests/practice-paragraphs/]] and its Authors. I take no credit for developing this material.
 
