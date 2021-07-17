@@ -7,7 +7,7 @@ To download the source code of the application type the following command:
 
 ## Requirements:
 
-This program  on Python. To install Python, check out https://installpython3.com/' 
+This program runs on Python. To install Python, check out https://installpython3.com/' 
 
 *Tpye* requires the following python packages to be installed:
 
@@ -18,14 +18,14 @@ This program  on Python. To install Python, check out https://installpython3.com
 
 Before starting the application ensure that all of the system environment requirements have been met.
  
-To install the necessary dependencies,  navigate to your *type* installation folder and execute the following command in your command line prompt:
+To install the necessary dependencies, navigate to your *type* src folder and execute the following command in your command line prompt:
 
 `-pip3 install ./requirements.txt`
 
 Ensure that the tpye executable file has the required permissions:  
 `chmod +x ./type.sh`  
 
-To start the application type the following, within the type installation directory.
+To start the application type the following, within the type src directory.
 
 `./type.sh`  
 

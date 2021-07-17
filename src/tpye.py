@@ -11,7 +11,7 @@ try:
 	if argv[1] == "--start":
 		selection = 's'
 	if argv[1] == "--highscores":
-		selection = 'h'
+		selection = 'v'
 	if argv[1] == "--about":
 		selection = 'a'
 	if argv[1] == "--version":

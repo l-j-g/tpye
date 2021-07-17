@@ -35,6 +35,10 @@ Observations: The feature is working as intended.
 
 ## High Scores / Score Calculation
 
+This test procedure will test if the highscore and score calculate feature is working correctly. This feature is expected to calculate a score based on speed and accuracy after completing a typing test. It also has functionality to save and load a persistant high score file to disk, and to print the top 10 highscores for each difficulty.
+
+Test Cases:
+
 ### No words are spelt correctly
 
 Expected behavior: If no words are typed correctly, the words per minute should be the number of words typed per minute. The accuracy should be 0% and the score should be zero.
@@ -55,4 +59,3 @@ Expected behavior:
 After a game is completed, if the score is in the top 10 high scores for that difficulty, the user will be notified and the score will be added to the list of high scores.
 
 Observations: The feature is working as intended. The user is notified and only the top 10 highscores for each difficulty is displayed. 
-

@@ -5,12 +5,12 @@
 
 ## Installation 
 
-To download the source code of the application type the following command:   
+To download the source code of the application execute the following command at your command line prompt:
 `git clone https://github.com/l-j-g/tpye.git`  
 
 ## Requirements:
 
-This program  on Python. To install Python, check out https://installpython3.com/' 
+This program runs on Python. To install Python, check out https://installpython3.com/' 
 
 *Tpye* requires the following python packages to be installed:
 
@@ -21,7 +21,7 @@ This program  on Python. To install Python, check out https://installpython3.com
 
 Before starting the application ensure that all of the system environment requirements have been met.
  
-To install the necessary dependencies,  navigate to your *type* installation folder and execute the following command in your command line prompt:
+To install the necessary dependencies, navigate to your *type* src folder and execute the following command in your command line prompt:
 
 `-pip3 install ./requirements.txt`
 
@@ -45,7 +45,6 @@ All typing tests used in this program have been sourced from https://thepractice
 As the user types the required passage of text, the characters input will be captured and stored in a variable. Once a word has been completed the word will be saved to a list of words typed by the user.
 
 The display will dynamically highlight the current word that the user is attempting to type in the color blue and will highlight previously typed words in either green or red depending on if it was typed correctly.
-
 
 ### Score Calculation
 
