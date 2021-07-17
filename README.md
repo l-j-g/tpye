@@ -5,7 +5,7 @@
 
 ## Installation 
 
-To download the source code of the application execute the following command at your command line prompt:
+To download the source code of the application execute the following command at your command line prompt:  
 `git clone https://github.com/l-j-g/tpye.git`  
 
 ## Requirements:
@@ -21,7 +21,7 @@ This program runs on Python. To install Python, check out https://installpython3
 
 Before starting the application ensure that all of the system environment requirements have been met.
  
-To install the necessary dependencies, navigate to your *type* src folder and execute the following command in your command line prompt:
+To install the necessary dependencies, navigate to your *type* src folder and execute the following command in your command line prompt:  
 
 `-pip3 install ./requirements.txt`
 
