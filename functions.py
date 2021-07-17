@@ -6,6 +6,7 @@ import time
 from blessed import Terminal
 from tabulate import tabulate
 from operator import itemgetter
+import sys
 
 def welcome():
 	tprint("tpye",font="block",chr_ignore=True)
@@ -101,9 +102,9 @@ def print_test(test_txt,word_count, attempt):
 	if word_count < len(split_txt):
 		split_txt[word_count] = blue + split_txt[word_count] + reset
 
-	test_txt = " ".join(split_txt)
-	print(test_txt)
-	return 
+	colour_test_txt = " ".join(split_txt)
+	print(colour_test_txt)
+	return colour_test_txt
 
 def start_game():
 # the primary function of my application that initiates a typing test 
@@ -131,17 +132,15 @@ def start_game():
 					print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
 				if key_press.name == "KEY_BACKSPACE":
 					this_word = this_word[:-1]
-					print(term.clear)
-					print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
-					print(this_word,end="",flush=True)
+					sys.stdout.write('\r'+this_word)
+					sys.stdout.flush()
 				else: #if 
 					pass
 				
 			else: 
 				this_word = this_word + key_press #if a other than whitepsace or backspace is entered this character is added as part of the current word that is being typed.
-				print(term.clear)
-				print_test(test_txt,word_count, attempt) # this function updates the text highlighting 
-				print(this_word,end="",flush=True)
+				sys.stdout.write('\r'+this_word)
+				sys.stdout.flush()
 	end = time.time()
 	duration, WPM, accuracy, score = calculate_score(start, end,test_txt,attempt)
 	high_score_entry = (name, score, WPM, accuracy)
